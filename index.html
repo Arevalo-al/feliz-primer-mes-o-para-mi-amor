@@ -1,307 +1,504 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Vista previa para WhatsApp y Redes Sociales -->
-  <title>Feliz Primer Mes ❤️</title>
-  <meta property="og:title" content="Feliz Primer Mes ❤️">
-  <meta property="og:description" content="Un detalle muy especial para celebrar nuestro primer mes juntos. Toca para ver la sorpresa.">
-  <meta property="og:image" content="https://i.ibb.co/3s3Xm02/foto1.jpg">
-  <meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --bg-color: #fbeef1;
-      --card-bg: #ffffff;
-      --primary: #e63946;
-      --text: #2b2d42;
+<title>Para mi My Amor 💖</title>
+
+<style>
+:root {
+    --rosa: #e63963;
+    --rosa-claro: #fff0f4;
+    --rosa-suave: #ffd9e3;
+    --texto: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #ffe8ef, #fff7f9);
+    color: var(--texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 520px;
+    background: white;
+    padding: 28px 22px;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(180, 50, 80, 0.18);
+    position: relative;
+    z-index: 2;
+}
+
+.heart {
+    font-size: 55px;
+    animation: latido 1.4s infinite;
+}
+
+h1 {
+    color: var(--rosa);
+    font-size: 2rem;
+    margin: 5px 0;
+}
+
+.subtitle {
+    color: #777;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.counter-box {
+    background: var(--rosa-claro);
+    border: 1px solid var(--rosa-suave);
+    border-radius: 18px;
+    padding: 18px 10px;
+    margin-bottom: 25px;
+}
+
+.counter-title {
+    color: var(--rosa);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.timer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+}
+
+.number {
+    font-size: 1.45rem;
+    font-weight: bold;
+}
+
+.label {
+    font-size: 0.7rem;
+    color: #888;
+}
+
+.btn-open {
+    border: none;
+    background: linear-gradient(135deg, #e63963, #ff6687);
+    color: white;
+    padding: 14px 22px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 7px 18px rgba(230,57,99,0.3);
+}
+
+.btn-open:active {
+    transform: scale(0.96);
+}
+
+.letter {
+    display: none;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 2px dashed #ffc5d2;
+    animation: aparecer 1s ease;
+}
+
+.letter h2 {
+    color: var(--rosa);
+    font-size: 1.4rem;
+}
+
+.letter-text {
+    text-align: left;
+    line-height: 1.75;
+    font-size: 1rem;
+}
+
+.final {
+    margin-top: 22px;
+    font-weight: bold;
+    color: var(--rosa);
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.gallery-title {
+    margin-top: 28px;
+    margin-bottom: 15px;
+    color: var(--rosa);
+    font-weight: bold;
+    text-align: left;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+}
+
+.gallery-item {
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.gallery-item:active img {
+    transform: scale(1.08);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal img {
+    max-width: 95%;
+    max-height: 85vh;
+    border-radius: 18px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 22px;
+    animation: subir 6s linear infinite;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+@keyframes latido {
+    0%, 100% {
+        transform: scale(1);
     }
-
-    body {
-      margin: 0;
-      padding: 20px;
-      background-color: var(--bg-color);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      box-sizing: border-box;
+    50% {
+        transform: scale(1.18);
     }
+}
 
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 380px) {
     .container {
-      max-width: 500px;
-      width: 100%;
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      text-align: center;
+        padding: 22px 16px;
     }
 
     h1 {
-      color: var(--primary);
-      margin-bottom: 5px;
-      font-size: 1.8rem;
-    }
-
-    .subtitle {
-      font-size: 0.95rem;
-      color: #666;
-      margin-bottom: 20px;
-    }
-
-    /* Contador */
-    .counter-box {
-      background: #fff5f6;
-      border: 1px solid #ffe1e5;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 25px;
-    }
-
-    .counter-title {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--primary);
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    .timer {
-      display: flex;
-      justify-content: space-around;
-    }
-
-    .time-unit {
-      display: flex;
-      flex-direction: column;
+        font-size: 1.7rem;
     }
 
     .number {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: var(--text);
+        font-size: 1.2rem;
     }
-
-    .label {
-      font-size: 0.75rem;
-      color: #888;
-    }
-
-    /* Botón Sorpresa */
-    .btn-open {
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 25px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.2s, background-color 0.2s;
-      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
-    }
-
-    .btn-open:active {
-      transform: scale(0.96);
-    }
-
-    /* Contenido Oculto / Carta */
-    .letter-content {
-      display: none;
-      margin-top: 25px;
-      border-top: 2px dashed #ffd1d7;
-      padding-top: 20px;
-      animation: fadeIn 0.8s ease-in-out forwards;
-    }
-
-    .letter-text {
-      line-height: 1.6;
-      font-size: 0.98rem;
-      color: #444;
-      text-align: left;
-      white-space: pre-line;
-      margin-bottom: 25px;
-    }
-
-    /* Galería de Fotos */
-    .gallery-title {
-      font-size: 1rem;
-      color: var(--primary);
-      font-weight: bold;
-      margin-bottom: 12px;
-      text-align: left;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .gallery-item {
-      position: relative;
-      width: 100%;
-      padding-top: 100%;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .gallery-item:active {
-      transform: scale(0.95);
-    }
-
-    .gallery-item img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Modal Visor de Fotos */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-    .modal img {
-      max-width: 90%;
-      max-height: 80vh;
-      border-radius: 12px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>¡Feliz Primer Mes! ❤️</h1>
-    <p class="subtitle">Un pequeño detalle para celebrar nuestro tiempo juntos.</p>
 
-    <!-- Contador de Tiempo -->
+<div class="container">
+
+    <div class="heart">💖</div>
+
+    <h1>Para mi My Amor 💖</h1>
+
+    <p class="subtitle">
+        Feliz primer mes, mi amor.
+        Este pequeño detalle es para ti.
+    </p>
+
     <div class="counter-box">
-      <div class="counter-title">Llevamos juntos</div>
-      <div class="timer">
-        <div class="time-unit">
-          <span class="number" id="days">00</span>
-          <span class="label">Días</span>
+
+        <div class="counter-title">
+            Llevamos juntos 💕
         </div>
-        <div class="time-unit">
-          <span class="number" id="hours">00</span>
-          <span class="label">Horas</span>
+
+        <div class="timer">
+
+            <div class="time-unit">
+                <span class="number" id="days">00</span>
+                <span class="label">Días</span>
+            </div>
+
+            <div class="time-unit">
+                <span class="number" id="hours">00</span>
+                <span class="label">Horas</span>
+            </div>
+
+            <div class="time-unit">
+                <span class="number" id="minutes">00</span>
+                <span class="label">Minutos</span>
+            </div>
+
+            <div class="time-unit">
+                <span class="number" id="seconds">00</span>
+                <span class="label">Segundos</span>
+            </div>
+
         </div>
-        <div class="time-unit">
-          <span class="number" id="minutes">00</span>
-          <span class="label">Minutos</span>
-        </div>
-        <div class="time-unit">
-          <span class="number" id="seconds">00</span>
-          <span class="label">Segundos</span>
-        </div>
-      </div>
     </div>
 
-    <!-- Botón para abrir la carta -->
-    <button class="btn-open" id="openBtn" onclick="toggleLetter()">Toca para abrir tu carta 💌</button>
+    <button class="btn-open" id="openBtn" onclick="toggleLetter()">
+        Toca para abrir tu carta 💌
+    </button>
 
-    <!-- Contenido de la Carta -->
-    <div class="letter-content" id="letter">
-      <div class="letter-text">
-Gracias por este primer mes tan bonito a tu lado. Cada momento juntos ha sido muy especial y no quería dejar pasar esta fecha sin recordarte lo mucho que me gustas y lo feliz que me hace compartir mi tiempo contigo.
+    <div class="letter" id="letter">
 
-¡Por muchos meses más aprendiendo y disfrutando juntos! ✨
-      </div>
+        <h2>Mi My Amor 💖</h2>
 
-      <!-- Galería de Fotos -->
-      <div class="gallery-title">Nuestros Recuerdos 📸</div>
-      <div class="gallery-grid">
-        <div class="gallery-item" onclick="openModal(this)">
-          <img src="https://i.ibb.co/3s3Xm02/foto1.jpg" alt="Día de Café">
+        <div class="letter-text">
+
+            <p>
+            Quiero aprovechar este primer mes para decirte algo que quizás no te digo todas las veces que debería.
+            </p>
+
+            <p>
+            Eres una persona muy importante para mí. Gracias por todo lo que estás haciendo por mí, por cada detalle, por cada momento, por tu cariño y simplemente por estar a mi lado.
+            </p>
+
+            <p>
+            Sinceramente, nunca imaginé que nosotros dos llegaríamos a estar juntos. Y lo más bonito de todo es que, en tan poquito tiempo, te has ganado una parte enorme de mi corazón.
+            </p>
+
+            <p>
+            Te amo cada mañana, cada tarde y cada noche. ❤️
+            </p>
+
+            <p>
+            No quiero perderte nunca. Quiero seguir conociéndote, seguir compartiendo momentos contigo, reír contigo, apoyarte y estar presente en cada etapa que venga.
+            </p>
+
+            <p>
+            Tengo muchos sueños y muchas cosas que quiero lograr en mi vida, pero una de las cosas que más deseo es poder lograr muchas de ellas junto a ti.
+            </p>
+
+            <p>
+            Este es solamente nuestro primer mes, pero espero que sea el primero de muchísimos más. Quiero que podamos mirar atrás algún día y recordar todo esto con una sonrisa.
+            </p>
+
+            <p>
+            Gracias por llegar a mi vida y por hacer que estos días sean mucho más especiales.
+            </p>
+
+            <p>
+            Te amo muchísimo, My Amor. 💖
+            </p>
+
         </div>
-        <div class="gallery-item" onclick="openModal(this)">
-          <img src="https://i.ibb.co/v3BvW4G/foto2.png" alt="Noche Juntos">
+
+        <div class="final">
+            Por nuestro primer mes y por todos los que nos esperan. 💖✨
         </div>
-        <div class="gallery-item" onclick="openModal(this)">
-          <img src="https://i.ibb.co/VMyh02p/foto3.jpg" alt="Momentos Especiales">
+
+        <div class="gallery-title">
+            Nuestros recuerdos 📸
         </div>
-      </div>
+
+        <div class="gallery">
+
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="foto1.jpg" alt="Nuestro recuerdo">
+            </div>
+
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="foto2.png" alt="Nuestro recuerdo">
+            </div>
+
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="foto3.jpg" alt="Nuestro recuerdo">
+            </div>
+
+        </div>
+
     </div>
-  </div>
 
-  <!-- Modal para agrandar foto -->
-  <div class="modal" id="photoModal" onclick="closeModal()">
+</div>
+
+<div class="modal" id="photoModal" onclick="closeModal()">
+
+    <span class="close">×</span>
+
     <img id="modalImg" src="" alt="Foto ampliada">
-  </div>
 
-  <script>
-    // Fecha de inicio: 14 de Julio de 2026
-    const startDate = new Date(2026, 6, 14, 0, 0, 0);
+</div>
 
-    function updateCounter() {
-      const now = new Date();
-      const diff = now - startDate;
+<script>
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
+// FECHA EN LA QUE COMENZARON
+const startDate = new Date(2026, 6, 14, 0, 0, 0);
 
-      document.getElementById('days').innerText = days < 10 ? '0' + days : days;
-      document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-      document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-      document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+function updateCounter() {
+
+    const now = new Date();
+    const diff = now - startDate;
+
+    if (diff < 0) return;
+
+    const days = Math.floor(
+        diff / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        (diff / (1000 * 60 * 60)) % 24
+    );
+
+    const minutes = Math.floor(
+        (diff / (1000 * 60)) % 60
+    );
+
+    const seconds = Math.floor(
+        (diff / 1000) % 60
+    );
+
+    document.getElementById("days").textContent =
+        String(days).padStart(2, "0");
+
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+}
+
+setInterval(updateCounter, 1000);
+updateCounter();
+
+
+// ABRIR CARTA
+
+function toggleLetter() {
+
+    const letter = document.getElementById("letter");
+    const button = document.getElementById("openBtn");
+
+    if (letter.style.display === "block") {
+
+        letter.style.display = "none";
+        button.textContent = "Toca para abrir tu carta 💌";
+
+    } else {
+
+        letter.style.display = "block";
+        button.textContent = "Cerrar carta 💖";
+
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth"
+        });
     }
+}
 
-    setInterval(updateCounter, 1000);
-    updateCounter();
 
-    function toggleLetter() {
-      const letter = document.getElementById('letter');
-      const btn = document.getElementById('openBtn');
+// ABRIR FOTO
 
-      if (letter.style.display === 'block') {
-        letter.style.display = 'none';
-        btn.innerText = 'Toca para abrir tu carta 💌';
-      } else {
-        letter.style.display = 'block';
-        btn.innerText = 'Cerrar carta ✨';
-      }
-    }
+function openModal(element) {
 
-    function openModal(element) {
-      const imgSrc = element.querySelector('img').src;
-      document.getElementById('modalImg').src = imgSrc;
-      document.getElementById('photoModal').style.display = 'flex';
-    }
+    const image = element.querySelector("img");
 
-    function closeModal() {
-      document.getElementById('photoModal').style.display = 'none';
-    }
-  </script>
+    document.getElementById("modalImg").src = image.src;
+
+    document.getElementById("photoModal").style.display = "flex";
+}
+
+
+// CERRAR FOTO
+
+function closeModal() {
+
+    document.getElementById("photoModal").style.display = "none";
+}
+
+
+// CORAZONES FLOTANDO
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+    heart.textContent = "💖";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+setInterval(createHeart, 900);
+
+</script>
+
 </body>
 </html>
