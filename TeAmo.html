@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Primer Mes ❤️</title>
+  <style>
+    :root {
+      --bg-color: #fbeef1;
+      --card-bg: #ffffff;
+      --primary: #e63946;
+      --text: #2b2d42;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: var(--bg-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .container {
+      max-width: 500px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--primary);
+      margin-bottom: 5px;
+      font-size: 1.8rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    /* Contador */
+    .counter-box {
+      background: #fff5f6;
+      border: 1px solid #ffe1e5;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 25px;
+    }
+
+    .counter-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .timer {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .time-unit {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .number {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    .label {
+      font-size: 0.75rem;
+      color: #888;
+    }
+
+    /* Botón Sorpresa */
+    .btn-open {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+    }
+
+    .btn-open:active {
+      transform: scale(0.96);
+    }
+
+    /* Contenido Oculto / Carta */
+    .letter-content {
+      display: none;
+      margin-top: 25px;
+      border-top: 2px dashed #ffd1d7;
+      padding-top: 20px;
+      animation: fadeIn 0.8s ease-in-out forwards;
+    }
+
+    .letter-text {
+      line-height: 1.6;
+      font-size: 0.98rem;
+      color: #444;
+      text-align: left;
+      white-space: pre-line;
+      margin-bottom: 25px;
+    }
+
+    /* Galería de Fotos */
+    .gallery-title {
+      font-size: 1rem;
+      color: var(--primary);
+      font-weight: bold;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .gallery-item {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* Ratio cuadrado 1:1 */
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery-item:active {
+      transform: scale(0.95);
+    }
+
+    .gallery-item img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Modal Visor de Fotos */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    }
+
+    /* Animación */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>¡Feliz Primer Mes! ❤️</h1>
+    <p class="subtitle">Un pequeño detalle para celebrar nuestro tiempo juntos.</p>
+
+    <!-- Contador de Tiempo -->
+    <div class="counter-box">
+      <div class="counter-title">Llevamos juntos</div>
+      <div class="timer">
+        <div class="time-unit">
+          <span class="number" id="days">00</span>
+          <span class="label">Días</span>
+        </div>
+        <div class="time-unit">
+          <span class="number" id="hours">00</span>
+          <span class="label">Horas</span>
+        </div>
+        <div class="time-unit">
+          <span class="number" id="minutes">00</span>
+          <span class="label">Minutos</span>
+        </div>
+        <div class="time-unit">
+          <span class="number" id="seconds">00</span>
+          <span class="label">Segundos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón para abrir la carta -->
+    <button class="btn-open" id="openBtn" onclick="toggleLetter()">Toca para abrir tu carta 💌</button>
+
+    <!-- Contenido de la Carta -->
+    <div class="letter-content" id="letter">
+      <div class="letter-text">
+Gracias por este primer mes tan bonito a tu lado. Cada momento juntos ha sido muy especial y no quería dejar pasar esta fecha sin recordarte lo mucho que me gustas y lo feliz que me hace compartir mi tiempo contigo.
+
+¡Por muchos meses más aprendiendo y disfrutando juntos! ✨
+      </div>
+
+      <!-- Galería de Fotos (Enlaces directos a tus imágenes subidas) -->
+      <div class="gallery-title">Nuestros Recuerdos 📸</div>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openModal(this)">
+          <img src="https://i.ibb.co/3s3Xm02/foto1.jpg" alt="Día de Café">
+        </div>
+        <div class="gallery-item" onclick="openModal(this)">
+          <img src="https://i.ibb.co/v3BvW4G/foto2.png" alt="Noche Juntos">
+        </div>
+        <div class="gallery-item" onclick="openModal(this)">
+          <img src="https://i.ibb.co/VMyh02p/foto3.jpg" alt="Momentos Especiales">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para agrandar foto -->
+  <div class="modal" id="photoModal" onclick="closeModal()">
+    <img id="modalImg" src="" alt="Foto ampliada">
+  </div>
+
+  <script>
+    // 1. FECHA DE INICIO (Año, Mes - 1, Día, Hora, Minuto)
+    // Nota: Los meses en JS van de 0 (Enero) a 11 (Diciembre). Julio es mes 6.
+    const startDate = new Date(2026, 6, 14, 0, 0, 0);
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+      document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+      document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // 2. MOSTRAR / OCULTAR CARTA
+    function toggleLetter() {
+      const letter = document.getElementById('letter');
+      const btn = document.getElementById('openBtn');
+
+      if (letter.style.display === 'block') {
+        letter.style.display = 'none';
+        btn.innerText = 'Toca para abrir tu carta 💌';
+      } else {
+        letter.style.display = 'block';
+        btn.innerText = 'Cerrar carta ✨';
+      }
+    }
+
+    // 3. VISOR DE FOTOS
+    function openModal(element) {
+      const imgSrc = element.querySelector('img').src;
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('photoModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('photoModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
